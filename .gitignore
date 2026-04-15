@@ -1,0 +1,88 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+.python-version
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+.env.*
+
+# ── Optional: Android / Gradle ──
+# Uncomment if your project includes an Android app.
+# **/.gradle/
+# **/build/
+# **/captures/
+# **/.externalNativeBuild/
+# **/.cxx/
+# **/local.properties
+# *.apk
+# *.aab
+
+# Data not tracked by default
+data/external_dataset/**
+data/raw/**
+data/interim/**
+!data/external_dataset/.gitkeep
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+
+# Runs: keep metadata, ignore heavy artifacts and caches
+runs/**/checkpoints/
+runs/**/cache/
+runs/**/tmp/
+runs/**/*.ckpt
+runs/**/*.pt
+runs/**/*.pth
+runs/**/*.bin
+runs/**/*.onnx
+runs/**/*.npy
+runs/**/*.npz
+runs/**/*.parquet
+runs/**/*.pkl
+runs/**/*.joblib
+runs/**/*.h5
+runs/**/*.feather
+
+# Common large binaries
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.onnx
+*.npy
+*.npz
+*.parquet
+*.pkl
+*.joblib
+*.h5
+*.feather
+
+# LaTeX build outputs
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc

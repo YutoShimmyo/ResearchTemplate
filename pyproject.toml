@@ -1,0 +1,10 @@
+[project]
+name = "my-research-project"  # TODO: rename to your project slug
+version = "0.1.0"
+description = ""  # TODO: one-line project description
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
