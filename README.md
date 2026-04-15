@@ -191,12 +191,13 @@ Python 側は `uv` を正規フローとします。
 最低限更新する場所:
 
 - `docs/implementation/current_system_state.md`
+- `docs/testing/agent_checks.md` — 新しい確認項目の追加 / 既存項目のステータス更新
+- `docs/testing/active_manual_checks.md` — ユーザ確認が必要なら追記
 - 必要なら `docs/implementation/architecture/`
-- `docs/testing/active_manual_checks.md`
 
-### 実装進捗を残す時
+### 大きめの実装をした時
 
-- `docs/implementation/progress/`
+- `docs/implementation/progress/YYYYMMDD_slug.md` に進捗エントリを書く
 
 ### 研究進捗を残す時
 
@@ -207,10 +208,14 @@ Python 側は `uv` を正規フローとします。
 - `docs/planning/future_required.md`
 - `docs/planning/future_optional.md`
 
-### AI が継続作業を残す時
+### AI がセッションを終了する時
 
-- `docs/implementation/handoff/agent_backlog.md`
-- `docs/implementation/handoff/agent_handoff_prompt.md`
+必ず更新する場所（詳細は `AGENTS.md` を参照）:
+
+- `docs/implementation/handoff/agent_handoff_prompt.md` — 現状と次のアクション
+- `docs/implementation/handoff/agent_backlog.md` — 残タスク
+- `docs/testing/agent_checks.md` — 確認ステータス
+- `docs/implementation/current_system_state.md` — 実装変更があれば
 
 ## First Files to Read
 
