@@ -29,6 +29,24 @@
 
 <!-- TODO: 箇条書きで列挙 -->
 
+## Quickstart
+
+```bash
+# 1. テンプレートから新規リポジトリを作成（GitHub の "Use this template" でも可）
+git clone https://github.com/YutoShimmyo/ResearchTemplate my-project
+cd my-project
+
+# 2. pyproject.toml の name / description を書き換える
+
+# 3. Python 環境を構築
+uv sync
+
+# 4. 動作確認
+uv run python -c "print('ready')"
+
+# 5. README.md と AGENTS.md の TODO コメントを埋める
+```
+
 ## Top-level Directory Tree
 
 ```text
@@ -64,10 +82,12 @@
 ### `data/`
 
 - 研究データ整理用ディレクトリ
-- `raw/` — 生データ（gitignore 済み、大きいデータはここ）
+- `raw/` — 生データ（gitignore 済み）
 - `interim/` — 中間処理結果（gitignore 済み）
-- `processed/` — 最終処理済みデータ
+- `processed/` — 最終処理済みデータ（gitignore 済み）
 - `external_dataset/` — 外部データセット（gitignore 済み）
+
+`data/` 配下は全て gitignore 済み。再現手順は `scripts/` に置き、`README` または `docs/implementation/` にデータ準備手順を書く。
 
 ### `docs/`
 
@@ -106,7 +126,8 @@ repo 運用で最も重要な文書群。下記の責務分割を守る。
 
 ### `papers/`
 
-- 論文本文、図の素材、執筆支援メモを置く
+- 論文本文（`.tex`）、図の素材、執筆に直結するメモを置く
+- 研究の思考過程や実験アイデアは `docs/research/` に書く（`papers/` には持ち込まない）
 
 ### `references/`
 
@@ -120,6 +141,8 @@ repo 運用で最も重要な文書群。下記の責務分割を守る。
 ### `runs/`
 
 - 実験 run ごとの出力を置く
+- 命名規則: `YYYY-MM-DD_HHMM_slug`（例: `2026-04-15_1430_baseline_v01`）
+- 各 run フォルダには最低限 `config.yaml`（使った設定のコピー）と `memo.md`（所見）を置く
 
 ### `scripts/`
 
@@ -151,6 +174,10 @@ repo 運用で最も重要な文書群。下記の責務分割を守る。
 - 役割が名前だけで分かるものを優先する
 - 略語だけの名前は避ける
 
+### Runs
+
+- `YYYY-MM-DD_HHMM_slug`（例: `2026-04-15_1430_baseline_v01`）
+
 ### General rules
 
 - `.DS_Store` など不要ファイルは repo に残さない
@@ -165,6 +192,16 @@ Python 側は `uv` を正規フローとします。
 - 正本: `pyproject.toml` + `uv.lock`
 
 `pip install -r ...` や ad-hoc な仮想環境運用は正規フローにしません。
+
+共通コマンド（`Makefile` 経由）:
+
+- `make setup` — 依存インストール
+- `make test` — テスト実行
+- `make lint` — リンター実行
+- `make format` — コードフォーマット
+- `make clean` — キャッシュ削除
+
+CI は `.github/workflows/ci.yml` で `main` / `develop` への push と PR 時に自動実行されます。
 
 <!-- TODO: Android, Node.js など追加の環境があればここに追記 -->
 

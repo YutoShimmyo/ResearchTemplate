@@ -35,9 +35,11 @@ env/
 data/external_dataset/**
 data/raw/**
 data/interim/**
+data/processed/**
 !data/external_dataset/.gitkeep
 !data/raw/.gitkeep
 !data/interim/.gitkeep
+!data/processed/.gitkeep
 
 # Runs: keep metadata, ignore heavy artifacts and caches
 runs/**/checkpoints/

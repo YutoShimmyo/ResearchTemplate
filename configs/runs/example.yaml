@@ -1,0 +1,29 @@
+# Example run config — copy and rename for each experiment.
+# Naming convention: configs/runs/<slug>.yaml
+
+project:
+  name: my-research-project  # TODO: replace
+  task: task-description      # TODO: replace
+
+run:
+  short_name: baseline
+  version: v01
+
+dataset:
+  name: dataset-name          # TODO: replace
+  input_dir: data/processed/dataset-name
+
+method:
+  name: method-name           # TODO: replace
+  description: ""             # TODO: one-line description
+
+evaluation:
+  seed: 42
+
+output:
+  root_dir: runs
+  # Run output will be saved to: runs/YYYY-MM-DD_HHMM_<short_name>_<version>/
+
+notes:
+  objective: ""   # What this run is trying to verify
+  memo: ""        # Post-run observations (fill in after running)

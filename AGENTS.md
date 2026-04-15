@@ -6,10 +6,11 @@
 
 ## 基本方針
 
-- raw-first を守る。観測した事実を保存し、特徴量や要約は後で `processed` や `exports` に作る。
-- raw の保存形式は基本 `JSONL` にする。
-- nested JSON は最小限に抑える。トップレベルに平らに置けるものは平らに置く。
-- event-driven で取れるものは polling より event-driven を優先する。
+- 再現性を最優先する。実験は config + seed で再現できる状態にする。
+- データと成果物は段階を分けて管理する: `data/raw/` → `data/interim/` → `data/processed/` → `results/`。
+- 中間成果物は再生成できるようにする。再生成手順は `scripts/` に置く。
+- 依存を追加する時は `uv add <package>` を使い、コミットメッセージに用途を書く。`pip install` は使わない。
+- 実験の run は `runs/YYYY-MM-DD_HHMM_slug/` に出力し、config のコピーと所見メモを必ず残す。
 
 ## セッション開始時にやること
 
@@ -56,9 +57,9 @@
 
 ### Agent ができる確認
 
-- `uv run pytest`
+- `make test`（= `uv run pytest`）
+- `make lint`（= `uv run ruff check .`）
 - `uv run python scripts/...`
-- build / lint / 型チェック
 - 出力ファイルの存在・中身の確認
 
 ### ユーザがやる確認
@@ -149,7 +150,19 @@
 
 <!-- TODO: プロジェクト固有のルールをここに追記する -->
 <!-- 例:
-- Android collector 固有のルール
+
+### データ収集プロジェクトの場合:
+- raw-first を守る。観測した事実を保存し、特徴量や要約は後で processed に作る
+- raw の保存形式は JSONL にする
+- nested JSON は最小限に抑える
+- event-driven で取れるものは polling より event-driven を優先する
+
+### Android アプリ開発がある場合:
+- Android 固有のルール
 - 特定の API / SDK の使い方
-- データ収集・保存に関する制約
+
+### ML 実験プロジェクトの場合:
+- モデルの学習スクリプトは scripts/ に置く
+- ハイパーパラメータは configs/ に YAML で管理する
+- 評価指標と比較表は results/tables/ に置く
 -->
